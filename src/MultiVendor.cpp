@@ -40,19 +40,18 @@ SET
 @NpcDisplayID   := 1298
 */
 
-#define GOSSIP_HELLO    "Greetings, it is time to gear up SUCKERS! ."
 //277_284-------------------------------------
-#define GOSSIP_TEXT_BROWSE_WEAPONS_277_284      "|TInterface/ICONS/Inv_mace_116:22:22:-18|t[Let me browse your Weapons]"
+#define GOSSIP_TEXT_BROWSE_WEAPONS_277_284      "|TInterface/ICONS/Inv_mace_116:24:24:-18|t[Let me browse your Weapons]"
 #define GOSSIP_TEXT_BROWSE_ARMOR_277_284        "|TInterface/ICONS/inv_chest_cloth_04:24:24:-18|t[Show me T10,5 Armor]"
-#define GOSSIP_TEXT_BROWSE_ACCESSOIRES_277_284  "|TInterface/ICONS/inv_chest_cloth_04:24:24:-18|t[Show me off set pieces]"
+#define GOSSIP_TEXT_BROWSE_ACCESSORIES_277_284  "|TInterface/ICONS/inv_chest_cloth_04:24:24:-18|t[Show me off set pieces]"
 //264-------------------------------------
-#define GOSSIP_TEXT_BROWSE_WEAPONS_264          "|TInterface/ICONS/Inv_mace_116:22:22:-18|t[Let me browse your Weapons]"
+#define GOSSIP_TEXT_BROWSE_WEAPONS_264          "|TInterface/ICONS/Inv_mace_116:24:24:-18|t[Let me browse your Weapons]"
 #define GOSSIP_TEXT_BROWSE_ARMOR_264            "|TInterface/ICONS/inv_chest_cloth_04:24:24:-18|t[Show me T10 Armor]"
-#define GOSSIP_TEXT_BROWSE_ACCESSOIRES_264      "|TInterface/ICONS/inv_chest_cloth_04:24:24:-18|t[Show me off set pieces]"
+#define GOSSIP_TEXT_BROWSE_ACCESSORIES_264      "|TInterface/ICONS/Inv_jewelry_ring_85:24:24:-18|t[Show me off set pieces]"
 //245 -------------------------------------
-#define GOSSIP_TEXT_BROWSE_ARMOR_245            "|TInterface/ICONS/inv_chest_cloth_04:24:24:-18|t[T9 Armor]"
-#define GOSSIP_TEXT_BROWSE_WEAPONS_245          "|TInterface/ICONS/Inv_mace_116:22:22:-18|t[Let me browse your Weapons]"
-#define GOSSIP_TEXT_BROWSE_ACCESSOIRES_245      "|TInterface/ICONS/inv_chest_cloth_04:24:24:-18|t[Show me off set pieces]"
+#define GOSSIP_TEXT_BROWSE_WEAPONS_245          "|TInterface/ICONS/Inv_mace_116:24:24:-18|t[Let me browse your Weapons]"
+#define GOSSIP_TEXT_BROWSE_ARMOR_245            "|TInterface/ICONS/inv_chest_cloth_04:24:24:-18|t[Show me T9 Armor please]"
+#define GOSSIP_TEXT_BROWSE_ACCESSORIES_245      "|TInterface/ICONS/Inv_jewelry_ring_85:24:24:-18|t[Show me off set pieces]"
 
 //npc_vendor database
 enum shop_list_id
@@ -87,8 +86,6 @@ public:
     bool OnGossipHello(Player* player, Creature* creature) override
     { 
         if (creature->IsVendor())
-            AddGossipItemFor(player, GOSSIP_ICON_CHAT, GOSSIP_HELLO, GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF);
-
             AddGossipItemFor(player, GOSSIP_ICON_VENDOR, GOSSIP_TEXT_BROWSE_WEAPONS_277_284, GOSSIP_ACTION_TRADE, 1);
             AddGossipItemFor(player, GOSSIP_ICON_VENDOR, GOSSIP_TEXT_BROWSE_ARMOR_277_284, GOSSIP_ACTION_TRADE, 2);
             AddGossipItemFor(player, GOSSIP_ICON_VENDOR, GOSSIP_TEXT_BROWSE_ACCESSOIRES_277_284, GOSSIP_ACTION_TRADE, 3);
@@ -129,7 +126,7 @@ public:
                player->GetSession()->SendListInventory(creature->GetGUID(), VENDOR_ARMOR_LIST_277_284);
              }
              break;
-         case 3: // ACCESSOIRES
+         case 3: // ACCESSORIES
              CloseGossipMenuFor(player);
              if (player->IsInCombat())
              {
@@ -155,8 +152,6 @@ public:
     bool OnGossipHello(Player* player, Creature* creature) override
     { 
         if (creature->IsVendor())
-            AddGossipItemFor(player, GOSSIP_ICON_CHAT, GOSSIP_HELLO, GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF);
-
             AddGossipItemFor(player, GOSSIP_ICON_VENDOR, GOSSIP_TEXT_BROWSE_WEAPONS_264, GOSSIP_ACTION_TRADE, 1);
             AddGossipItemFor(player, GOSSIP_ICON_VENDOR, GOSSIP_TEXT_BROWSE_ARMOR_264, GOSSIP_ACTION_TRADE, 2);
             AddGossipItemFor(player, GOSSIP_ICON_VENDOR, GOSSIP_TEXT_BROWSE_ACCESSOIRES_264, GOSSIP_ACTION_TRADE, 3);
@@ -197,7 +192,7 @@ public:
                player->GetSession()->SendListInventory(creature->GetGUID(), VENDOR_ARMOR_LIST_264);
              }
              break;
-         case 3: // ACCESSOIRES
+         case 3: // ACCESSORIES
              CloseGossipMenuFor(player);
              if (player->IsInCombat())
              {
@@ -224,8 +219,6 @@ public:
     bool OnGossipHello(Player* player, Creature* creature) override
     { 
         if (creature->IsVendor())
-            AddGossipItemFor(player, GOSSIP_ICON_CHAT, GOSSIP_HELLO, GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF);
-
             AddGossipItemFor(player, GOSSIP_ICON_VENDOR, GOSSIP_TEXT_BROWSE_WEAPONS_245, GOSSIP_ACTION_TRADE, 1);
             AddGossipItemFor(player, GOSSIP_ICON_VENDOR, GOSSIP_TEXT_BROWSE_ARMOR_245, GOSSIP_ACTION_TRADE, 2);
             AddGossipItemFor(player, GOSSIP_ICON_VENDOR, GOSSIP_TEXT_BROWSE_ACCESSOIRES_245, GOSSIP_ACTION_TRADE, 3);
@@ -240,7 +233,7 @@ public:
 
         switch (action)
         {
-         case 1: // Weapons
+         case 1: // WEAPONS
             CloseGossipMenuFor(player);
             if (player->IsInCombat())
             {
@@ -253,7 +246,7 @@ public:
                 player->GetSession()->SendListInventory(creature->GetGUID(), VENDOR_WEAPON_LIST_245);
             }            
              break;
-         case 2: // Armors
+         case 2: // ARMORS
              CloseGossipMenuFor(player);
              if (player->IsInCombat())
              {
@@ -266,7 +259,7 @@ public:
                player->GetSession()->SendListInventory(creature->GetGUID(), VENDOR_ARMOR_LIST_245);
              }
              break;
-         case 3: // Specials
+         case 3: // ACCESSORIES
              CloseGossipMenuFor(player);
              if (player->IsInCombat())
              {
