@@ -9,6 +9,8 @@
 - Weapons, Armors & Accessories
 - Easy to edit shop list via database
 
+![image](https://user-images.githubusercontent.com/87277682/190551398-a00de13e-2820-4c27-afcc-72527ed5d1a8.png)
+![image](https://user-images.githubusercontent.com/87277682/190551434-7cca7305-0b85-4cc6-82a5-348ae6f5c267.png)
 
 
 ## Requirements
