@@ -27,5 +27,5 @@
 
 ### Credits ###
 ------------------------------------------------------------------------------------------------------------------
-- [HolyDEEW (Holy)](https://github.com/WoWHellgarve-HolyDeeW)
+- [HolyDEEW (Holy)](https://github.com/WoWHellgarve-HolyDeeW) & Hynael for items entrys thank you ^^
 
